@@ -1,15 +1,18 @@
 services:
-  app_laravel:
+  app_nodejs:
     build:
       context: ./backend
-    container_name: laravel_app
-    working_dir: /var/www/html
+      dockerfile: Dockerfile
+    container_name: nodejs_app
+    working_dir: /app
     volumes:
-      - ./backend/laravel:/var/www/html
+      - ./backend/nodejs:/app
+      - /app/node_modules 
     ports:
-      - "8000:8000"
+      - "3000:3000"
     depends_on:
       - db
+    command: tail -f /dev/null
   app_angular:
     build:
       context: ./frontend
@@ -21,14 +24,14 @@ services:
     ports:
       - "4200:4200"
     depends_on:
-      - app_laravel
+      - app_nodejs
     command: tail -f /dev/null
 #    command: sleep infinity
   db:
     image: postgres:15
-    container_name: laravel_pg
+    container_name: base_datos_pg
     environment:
-      POSTGRES_DB: db_laravel
+      POSTGRES_DB: db_developer
       POSTGRES_USER: dba
       POSTGRES_PASSWORD: sys
     ports:
