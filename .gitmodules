@@ -1,0 +1,6 @@
+[submodule "uegg_backend"]
+	path = uegg_backend
+	url = https://github.com/GuellyMorA/uegg_backend.git
+[submodule "uegg_frontend"]
+	path = uegg_frontend
+	url = https://github.com/GuellyMorA/uegg_frontend.git
