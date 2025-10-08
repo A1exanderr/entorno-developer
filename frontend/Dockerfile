@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:18.19.0
 
 # Instalar la CLI de Vue globalmente
 RUN npm install -g @vue/cli
