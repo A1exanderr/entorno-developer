@@ -1,31 +1,30 @@
 services:
   app_nodejs:
     build:
-      context: ./backend
+      context: ./uegg_backend
       dockerfile: Dockerfile
     container_name: nodejs_app
     working_dir: /app
     volumes:
-      - ./backend/nodejs:/app
+      - ./uegg_backend:/app
+      - /app/node_modules 
     ports:
       - "3000:3000"
     depends_on:
       - db
-    command: tail -f /dev/null
   app_vuejs:
     build:
-      context: ./frontend
+      context: ./uegg_frontend
       dockerfile: Dockerfile
     container_name: vuejs_app
     working_dir: /app
     volumes:
-      - ./frontend/vuejs:/app
+      - ./uegg_frontend/vuejs:/app
+      - /app/node_modules
     ports:
       - "5173:5173"
     depends_on:
       - app_nodejs
-    command: tail -f /dev/null
-#    command: sleep infinity
   db:
     image: postgres:15
     container_name: base_datos_pg
