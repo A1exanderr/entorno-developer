@@ -15,26 +15,22 @@ docker compose stop
 > Para crear proyectos entre por shell
 ```
 docker exec -it nodejs_app bash 
-docker exec -it angular_app bash 
-```
->creacion de proyectos
-```
-ng new hola_mundo
-
-
-ng s --host 0.0.0.0
-php artisan serve --host 0.0.0.0
-```
->para desarrollo dar permisos
-```
-sudo chown -R $USER:$USER frontend/angular backend/laravel
-```
->comandos necesarios
-```
-ng g environments
+docker exec -it vuejs_app bash 
 ```
 >Para ver los logs
 ```
 docker logs -f nodejs_app
-docker logs -f angular_app
+docker logs -f vuejs_app
+```
+>Dar permisos al usuario actual para desarrollo
+```
+sudo chown -R $USER:$USER uegg_backend uegg_frontend
+```
+>
+```
+
+```
+>
+```
+
 ```
