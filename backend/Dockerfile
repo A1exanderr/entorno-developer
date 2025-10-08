@@ -1,4 +1,0 @@
-#FROM node:20
-FROM node:18.19.0
-WORKDIR /app
-EXPOSE 3000
