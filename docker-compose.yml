@@ -19,7 +19,7 @@ services:
     container_name: vuejs_app
     working_dir: /app
     volumes:
-      - ./uegg_frontend/vuejs:/app
+      - ./uegg_frontend:/app
       - /app/node_modules
     ports:
       - "5173:5173"
