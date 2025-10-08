@@ -1,4 +1,4 @@
-# DESARROLLO NODEJS Y ANGULAR
+# DESARROLLO NODEJS y VUEJS
 >luego ejecuta el siguiente comando
 ```
 docker compose up --build
