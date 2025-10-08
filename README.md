@@ -26,9 +26,9 @@ docker logs -f vuejs_app
 ```
 sudo chown -R $USER:$USER uegg_backend uegg_frontend
 ```
->
+> migracion a la base datos
 ```
-
+psql -h 10.1.10.24 -p 5432 -U dba -d uegg -f dump-uegg-202510041609.sql
 ```
 >
 ```
