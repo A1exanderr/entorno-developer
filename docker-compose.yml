@@ -7,22 +7,21 @@ services:
     working_dir: /app
     volumes:
       - ./backend/nodejs:/app
-      - /app/node_modules 
     ports:
       - "3000:3000"
     depends_on:
       - db
     command: tail -f /dev/null
-  app_angular:
+  app_vuejs:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: angular_app
+    container_name: vuejs_app
     working_dir: /app
     volumes:
-      - ./frontend/angular:/app
+      - ./frontend/vuejs:/app
     ports:
-      - "4200:4200"
+      - "5173:5173"
     depends_on:
       - app_nodejs
     command: tail -f /dev/null
