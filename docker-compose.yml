@@ -29,7 +29,7 @@ services:
     image: postgres:15
     container_name: base_datos_pg
     environment:
-      POSTGRES_DB: db_developer
+      POSTGRES_DB: uegg
       POSTGRES_USER: dba
       POSTGRES_PASSWORD: sys
     ports:
