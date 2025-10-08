@@ -1,4 +1,9 @@
 # DESARROLLO NODEJS y VUEJS
+>git
+```
+git checkout VueJsNodeJs
+git submodule update --init --recursive
+```
 >luego ejecuta el siguiente comando
 ```
 docker compose up --build
