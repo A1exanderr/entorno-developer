@@ -9,7 +9,7 @@ services:
       - ./uegg_backend:/app
       - /app/node_modules 
     ports:
-      - "3000:3000"
+      - "3005:3005"
     depends_on:
       - db
   app_vuejs:
