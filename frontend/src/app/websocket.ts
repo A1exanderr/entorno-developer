@@ -5,30 +5,31 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class Websocket {
   private ws!: WebSocket;
-
-  // Estado del carrito
-  carrito$ = new BehaviorSubject<any[]>([]);
+  private carritoSubject = new BehaviorSubject<any[]>([]);
+  carrito$ = this.carritoSubject.asObservable();
 
   constructor(private zone: NgZone) {}
 
   conectar() {
     this.ws = new WebSocket('ws://localhost:3000');
 
-    this.ws.onmessage = (msg) => {
-      const data = JSON.parse(msg.data);
+    this.ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
 
-      // 🔥 Forzar actualización de Angular
-      this.zone.run(() => {
-        this.carrito$.next(data.carrito);
-      });
+      if (data.type === 'carrito') {
+        this.zone.run(() => {
+          // 🔥 nueva referencia
+          this.carritoSubject.next([...data.carrito]);
+        });
+      }
     };
   }
 
   agregarProducto(item: any) {
-    this.ws.send(JSON.stringify({ action: 'agregar', item }));
+    this.ws.send(JSON.stringify({ type: 'agregar', item }));
   }
 
   eliminarProducto(item: any) {
-    this.ws.send(JSON.stringify({ action: 'eliminar', item }));
+    this.ws.send(JSON.stringify({ type: 'eliminar', item }));
   }
 }

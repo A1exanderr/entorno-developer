@@ -1,7 +1,9 @@
+<h2>Carrito en Tiempo Real</h2>
+
 <button (click)="agregar()">Agregar producto</button>
 
 <ul>
-  <li *ngFor="let item of carrito">
+  <li *ngFor="let item of carrito$ | async">
     {{ item.nombre }}
     <button (click)="eliminar(item)">❌</button>
   </li>

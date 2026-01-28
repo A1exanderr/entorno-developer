@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Websocket } from '../websocket';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-carrito',
   imports: [CommonModule],
@@ -8,22 +9,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './carrito.scss',
 })
 export class Carrito implements OnInit{
-  carrito: any[] = [];
+  carrito$!: Observable<any[]>;
+
   constructor(private ws: Websocket) {}
 
   ngOnInit(): void {
     this.ws.conectar();
-    this.ws.carrito$.subscribe(data => {
-      this.carrito = data;
-    });
+    this.carrito$ = this.ws.carrito$;
   }
 
   agregar() {
-    const producto = {
+    this.ws.agregarProducto({
       id: Date.now(),
-      nombre: 'Producto ' + this.carrito.length
-    };
-    this.ws.agregarProducto(producto);
+      nombre: 'Producto ' + Date.now()
+    });
   }
 
   eliminar(item: any) {
