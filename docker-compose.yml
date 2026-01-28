@@ -1,5 +1,4 @@
 services:
-
   db_posgresql:
     image: postgres:15
     container_name: datos_pg
@@ -13,12 +12,14 @@ services:
       - pgdata:/var/lib/postgresql/data
   backend:
     build:
-      context: ./idg-backend
-      dockerfile: ../Dockerfile.nodejs.dev
+      #context: ./backend
+      #dockerfile: ../Dockerfile.nodejs.dev
+      dockerfile: ./Dockerfile.nodejs.dev
     container_name: backend
     working_dir: /app
     volumes:
-      - ./idg-backend:/app
+      #- ./backend:/app
+      - ./:/app
       - /app/node_modules
     ports:
       - "3000:3000"
@@ -28,12 +29,14 @@ services:
 
   frontend:
     build:
-      context: ./idg-frontend
-      dockerfile: ../Dockerfile.angular.dev
+      #context: ./frontend
+      #dockerfile: ../Dockerfile.angular.dev
+      dockerfile: ./Dockerfile.angular.dev
     container_name: frontend
     working_dir: /app
     volumes:
-      - ./idg-frontend:/app
+      #- ./frontend:/app
+      - ./:/app
       - /app/node_modules
     ports:
       - "80:4300"
