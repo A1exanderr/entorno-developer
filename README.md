@@ -27,6 +27,7 @@ docker logs -f frontend_idg
 > Iniciar nodejs por primera vez 
 ```
 docker compose exec backend npm init -y
+docker compose exec backend npm install express pg dotenv ws
 ```
 > Dockerfile.nodejs.dev
 ```
@@ -38,4 +39,12 @@ EXPOSE 3000
 > Para dar los permisos
 ```
 sudo chown -R $USER:$USER backend frontend
+```
+> Iniciar nodejs por primera angular
+```
+
+```
+> 
+```
+
 ```
