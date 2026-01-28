@@ -23,8 +23,6 @@ services:
       - "3000:3000"
     depends_on:
       - db_posgresql
-    command: tail -f /dev/null
-
   frontend:
     build:
       #context: ./frontend
@@ -40,7 +38,5 @@ services:
       - "80:4300"
     depends_on:
       - backend
-    command: tail -f /dev/null
-
 volumes:
   pgdata:
