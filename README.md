@@ -36,13 +36,17 @@ RUN npm install -g nodemon
 WORKDIR /app
 EXPOSE 3000
 ```
+> Iniciar nodejs por primera angular
+```
+FROM node:24
+RUN npm install -g @angular/cli
+WORKDIR /app
+EXPOSE 4300
+CMD ["tail", "-f", "/dev/null"]
+```
 > Para dar los permisos
 ```
 sudo chown -R $USER:$USER backend frontend
-```
-> Iniciar nodejs por primera angular
-```
-
 ```
 > 
 ```

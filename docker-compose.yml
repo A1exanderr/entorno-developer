@@ -25,14 +25,14 @@ services:
       - db_posgresql
   frontend:
     build:
-      #context: ./frontend
-      #dockerfile: ../Dockerfile.angular.dev
-      dockerfile: ./Dockerfile.angular.dev
+      context: ./frontend
+      dockerfile: ../Dockerfile.angular.dev
+      #dockerfile: ./Dockerfile.angular.dev
     container_name: frontend
     working_dir: /app
     volumes:
-      #- ./frontend:/app
-      - ./:/app
+      - ./frontend:/app
+      #- ./:/app
       - /app/node_modules
     ports:
       - "80:4300"
