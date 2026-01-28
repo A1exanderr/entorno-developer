@@ -12,14 +12,12 @@ services:
       - pgdata:/var/lib/postgresql/data
   backend:
     build:
-      #context: ./backend
-      #dockerfile: ../Dockerfile.nodejs.dev
-      dockerfile: ./Dockerfile.nodejs.dev
+      context: ./backend
+      dockerfile: ../Dockerfile.nodejs.dev
     container_name: backend
     working_dir: /app
     volumes:
-      #- ./backend:/app
-      - ./:/app
+      - ./backend:/app
       - /app/node_modules
     ports:
       - "3000:3000"
