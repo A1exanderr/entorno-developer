@@ -27,7 +27,14 @@ docker logs -f frontend_idg
 ```
 sudo chown -R $USER:$USER uegg_backend uegg_frontend
 ```
-> 
+> Iniciar nodejs por primera vez 
 ```
-
+docker compose exec backend npm init -y
+```
+> Dockerfile.nodejs.dev
+```
+FROM node:20
+RUN npm install -g nodemon
+WORKDIR /app
+EXPOSE 3000
 ```
