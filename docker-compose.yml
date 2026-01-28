@@ -1,0 +1,26 @@
+services:
+  idg_backend:
+    build:
+      context: ./idg-backend
+      dockerfile: ../Dockerfile.nodejs.dev
+    container_name: backend_idg
+    working_dir: /app
+    volumes:
+      - ./idg-backend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+  idg_frontend:
+    build:
+      context: ./idg-frontend
+      dockerfile: ../Dockerfile.angular.dev
+    container_name: frontend_idg
+    working_dir: /app
+    volumes:
+      - ./idg-frontend:/app
+      - /app/node_modules
+    ports:
+      - "80:4300"
+    depends_on:
+      - idg_backend
