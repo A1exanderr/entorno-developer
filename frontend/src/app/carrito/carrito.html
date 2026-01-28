@@ -1,1 +1,8 @@
-<p>carrito works!</p>
+<button (click)="agregar()">Agregar producto</button>
+
+<ul>
+  <li *ngFor="let item of carrito">
+    {{ item.nombre }}
+    <button (click)="eliminar(item)">❌</button>
+  </li>
+</ul>
