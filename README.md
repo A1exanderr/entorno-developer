@@ -23,10 +23,7 @@ docker exec -it frontend_idg bash
 docker logs -f backend_idg
 docker logs -f frontend_idg 
 ```
-> Para dar los permisos
-```
-sudo chown -R $USER:$USER uegg_backend uegg_frontend
-```
+
 > Iniciar nodejs por primera vez 
 ```
 docker compose exec backend npm init -y
@@ -37,4 +34,8 @@ FROM node:20
 RUN npm install -g nodemon
 WORKDIR /app
 EXPOSE 3000
+```
+> Para dar los permisos
+```
+sudo chown -R $USER:$USER backend frontend
 ```
