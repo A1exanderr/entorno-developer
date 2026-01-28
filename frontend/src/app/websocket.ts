@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -9,34 +9,26 @@ export class Websocket {
   // Estado del carrito
   carrito$ = new BehaviorSubject<any[]>([]);
 
+  constructor(private zone: NgZone) {}
+
   conectar() {
     this.ws = new WebSocket('ws://localhost:3000');
 
-    this.ws.onopen = () => {
-      console.log('WebSocket conectado');
-    };
-
     this.ws.onmessage = (msg) => {
       const data = JSON.parse(msg.data);
-      this.carrito$.next(data.carrito);
-    };
 
-    this.ws.onerror = (err) => {
-      console.error('Error WebSocket', err);
+      // 🔥 Forzar actualización de Angular
+      this.zone.run(() => {
+        this.carrito$.next(data.carrito);
+      });
     };
   }
 
-  agregarProducto(producto: any) {
-    this.ws.send(JSON.stringify({
-      action: 'agregar',
-      item: producto
-    }));
+  agregarProducto(item: any) {
+    this.ws.send(JSON.stringify({ action: 'agregar', item }));
   }
 
-  eliminarProducto(producto: any) {
-    this.ws.send(JSON.stringify({
-      action: 'eliminar',
-      item: producto
-    }));
+  eliminarProducto(item: any) {
+    this.ws.send(JSON.stringify({ action: 'eliminar', item }));
   }
 }
