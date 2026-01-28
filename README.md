@@ -1,29 +1,5 @@
 # ENTORNO DE DESARROLLO
 
-> Git
-```
-git checkout AngularNodejs_idg
-git submodule update --init --recursive
-```
-> luego ejecuta el siguiente comando
-```
-docker compose up --build
-docker compose up --build -d
-docker compose ps
-docker compose start
-docker compose stop
-```
-> Para entrar por modo shall
-```
-docker exec -it backend_idg bash 
-docker exec -it frontend_idg bash 
-```
-> Para ver sus logs
-```
-docker logs -f backend_idg
-docker logs -f frontend_idg 
-```
-
 > Iniciar nodejs por primera vez 
 ```
 docker compose exec backend npm init -y
@@ -44,6 +20,10 @@ WORKDIR /app
 EXPOSE 4300
 CMD ["tail", "-f", "/dev/null"]
 ```
+> Para iniciar el proyecto angular
+```
+docker compose exec frontend ng new frontend
+```
 > Para dar los permisos
 ```
 sudo chown -R $USER:$USER backend frontend
@@ -51,4 +31,29 @@ sudo chown -R $USER:$USER backend frontend
 > 
 ```
 
+```
+
+
+> 
+```
+
+```
+> luego ejecuta el siguiente comando
+```
+docker compose up --build
+docker compose up --build -d
+docker compose ps
+docker compose start
+docker compose stop
+```
+> Para entrar por modo shell
+```
+docker exec -it backend bash 
+docker exec -it frontend bash 
+```
+> Para ver sus logs
+```
+docker logs -f backend
+docker logs -f frontend
+docker compose logs -f 
 ```
