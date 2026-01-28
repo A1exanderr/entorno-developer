@@ -24,15 +24,14 @@ CMD ["tail", "-f", "/dev/null"]
 ```
 docker compose exec frontend ng new frontend
 ```
+> variable envairoment
+```
+docker compose exec frontend ng g environments
+```
 > Para dar los permisos
 ```
 sudo chown -R $USER:$USER backend frontend
 ```
-> 
-```
-
-```
-
 
 > 
 ```
