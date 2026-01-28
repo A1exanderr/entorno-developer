@@ -3,7 +3,7 @@
 > Iniciar nodejs por primera vez 
 ```
 docker compose exec backend npm init -y
-docker compose exec backend npm install express pg dotenv ws
+docker compose exec backend npm install express pg dotenv ws cors
 ```
 > Dockerfile.nodejs.dev
 ```
