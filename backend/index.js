@@ -15,6 +15,12 @@ let carrito = [];
 // WebSocket
 wss.on('connection', (ws) => {
   console.log('Cliente conectado');
+  console.log('Conectados:', wss.clients.size);
+
+  ws.on('close', () => {
+    console.log('Cliente desconectado');
+    console.log('Conectados:', wss.clients.size);
+  });
 
   // Enviar estado inicial (CLON)
   ws.send(JSON.stringify({
