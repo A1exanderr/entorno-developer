@@ -1,21 +1,36 @@
 services:
-  idg_backend:
+
+  db_posgresql:
+    image: postgres:15
+    container_name: datos_pg
+    environment:
+      POSTGRES_DB: db_developer
+      POSTGRES_USER: dba
+      POSTGRES_PASSWORD: sys
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  backend:
     build:
       context: ./idg-backend
       dockerfile: ../Dockerfile.nodejs.dev
-    container_name: backend_idg
+    container_name: backend
     working_dir: /app
     volumes:
       - ./idg-backend:/app
       - /app/node_modules
     ports:
       - "3000:3000"
+    depends_on:
+      - db_posgresql
+    command: tail -f /dev/null
 
-  idg_frontend:
+  frontend:
     build:
       context: ./idg-frontend
       dockerfile: ../Dockerfile.angular.dev
-    container_name: frontend_idg
+    container_name: frontend
     working_dir: /app
     volumes:
       - ./idg-frontend:/app
@@ -23,4 +38,8 @@ services:
     ports:
       - "80:4300"
     depends_on:
-      - idg_backend
+      - backend
+    command: tail -f /dev/null
+
+volumes:
+  pgdata:
