@@ -4,7 +4,7 @@
 ```
 docker compose exec backend npm init -y
 docker compose exec backend npm install fastify fastify-plugin ws dotenv #fastify-websocket
-docker compose exec backend npm install @prisma/client
+docker compose exec backend npm install @prisma/client prisma
 docker compose exec backend npm install -D typescript ts-node @types/node nodemon
 ```
 > Inicializa TypeScript
