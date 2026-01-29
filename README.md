@@ -1,9 +1,19 @@
 # ENTORNO DE DESARROLLO
 
-> Iniciar nodejs por primera vez 
+> Instalar Fastify + TypeScript + Prisma
 ```
 docker compose exec backend npm init -y
-docker compose exec backend npm install express pg dotenv ws
+docker compose exec backend npm install fastify fastify-plugin fastify-websocket
+docker compose exec backend npm install @prisma/client
+docker compose exec backend npm install -D typescript ts-node @types/node nodemon
+```
+> Inicializa TypeScript
+```
+npx tsc --init
+```
+> Inicializar Prisma
+```
+npx prisma init
 ```
 > Dockerfile.nodejs.dev
 ```
