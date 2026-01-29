@@ -8,6 +8,9 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -17,7 +20,9 @@ import { CheckboxModule } from 'primeng/checkbox';
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    CheckboxModule
+    CheckboxModule,
+    InputGroupModule,
+    InputGroupAddonModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',

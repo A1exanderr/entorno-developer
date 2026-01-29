@@ -10,31 +10,32 @@
 
     <div class="p-fluid">
       <div class="field">
-        <span class="p-input-icon-left">
-          <i class="pi pi-envelope"></i>
-          <input
-            pInputText
-            type="email"
-            placeholder="Correo electrónico"
-            [(ngModel)]="email"
-          />
+        <p-inputgroup>
+          <p-inputgroup-addon>
+              <i class="pi pi-envelope"></i>
+          </p-inputgroup-addon>
           <p-floatlabel variant="on">
             <input pInputText id="on_label" [(ngModel)]="email" autocomplete="off" />
-            <label for="on_label">email</label>
+            <label for="on_label">Correo electrónico</label>
           </p-floatlabel>
-        </span>
+        </p-inputgroup>
       </div>
 
       <div class="field">
-        <span class="p-input-icon-left">
-          <i class="pi pi-lock"></i>
-          <p-password
-            [(ngModel)]="password"
-            placeholder="Contraseña"
-            [feedback]="false"
-            toggleMask="true">
-          </p-password>
-        </span>
+        <p-inputgroup>
+          <p-inputgroup-addon>
+              <i class="pi pi-lock"></i>
+          </p-inputgroup-addon>
+          <p-floatlabel variant="on">
+            <p-password
+              [(ngModel)]="password"
+              [feedback]="false"
+              toggleMask="true"
+              >
+            </p-password>
+            <label for="on_label">Contraseña</label>
+          </p-floatlabel>
+        </p-inputgroup>
       </div>
 
       <div class="field-checkbox remember">
