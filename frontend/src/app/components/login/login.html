@@ -1,0 +1,54 @@
+<div class="login-container">
+  <p-card class="login-card">
+    <ng-template pTemplate="header">
+      <div class="login-header">
+        <i class="pi pi-user"></i>
+        <h2>Iniciar sesión</h2>
+        <span>Bienvenido nuevamente</span>
+      </div>
+    </ng-template>
+
+    <div class="p-fluid">
+      <div class="field">
+        <span class="p-input-icon-left">
+          <i class="pi pi-envelope"></i>
+          <input
+            pInputText
+            type="email"
+            placeholder="Correo electrónico"
+            [(ngModel)]="email"
+          />
+        </span>
+      </div>
+
+      <div class="field">
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <p-password
+            [(ngModel)]="password"
+            placeholder="Contraseña"
+            [feedback]="false"
+            toggleMask="true">
+          </p-password>
+        </span>
+      </div>
+
+      <div class="field-checkbox remember">
+        <p-checkbox [(ngModel)]="remember" binary="true"></p-checkbox>
+        <label>Recordarme</label>
+      </div>
+
+      <button
+        pButton
+        label="Ingresar"
+        icon="pi pi-sign-in"
+        class="login-btn"
+        (click)="login()">
+      </button>
+    </div>
+
+    <div class="login-footer">
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+  </p-card>
+</div>
