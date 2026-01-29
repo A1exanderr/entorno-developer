@@ -1,17 +1,19 @@
 import { Component, signal } from '@angular/core';
 //ng prime
+import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   imports: [
     FormsModule,
     CardModule,
+    FloatLabelModule,
     InputTextModule,
     PasswordModule,
     ButtonModule,

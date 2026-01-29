@@ -3,7 +3,7 @@
     <ng-template pTemplate="header">
       <div class="login-header">
         <i class="pi pi-user"></i>
-        <h2>Iniciar sesión</h2>
+        <h2>INICIAR SESSIÓN</h2>
         <span>Bienvenido nuevamente</span>
       </div>
     </ng-template>
@@ -18,6 +18,10 @@
             placeholder="Correo electrónico"
             [(ngModel)]="email"
           />
+          <p-floatlabel variant="on">
+            <input pInputText id="on_label" [(ngModel)]="email" autocomplete="off" />
+            <label for="on_label">email</label>
+          </p-floatlabel>
         </span>
       </div>
 
