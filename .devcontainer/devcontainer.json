@@ -1,0 +1,17 @@
+{
+  "name": "Developer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "angular.ng-template"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "forwardPorts": [3000, 80],
+  /* "postCreateCommand": "cd /app && npm install" */
+}
