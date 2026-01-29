@@ -17,6 +17,7 @@ npx prisma db seed
 npx prisma init
 npx prisma migrate dev --name init
 npx prisma db seed
+npm install @prisma/adapter-pg tsx
 ```
 > Dockerfile.nodejs.dev
 ```

@@ -1,17 +1,30 @@
-import { PrismaClient } from '../generated/prisma/client'; // Path exacto
+import { PrismaPg } from '@prisma/adapter-pg'
+import { PrismaClient } from './generated/prisma/client'
+import 'dotenv/config';
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg({ 
+  connectionString: process.env.DATABASE_URL 
+});
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  await prisma.user.create({
+  console.log('Iniciando seed...');
+
+  const user = await prisma.user.create({
     data: {
       email: 'hola@ejemplo.com',
       name: 'Hola Mundo',
     },
   });
+
+  console.log('Usuario creado:', user);
 }
 
 main()
-  .then(() => console.log('Seed completado ✅'))
-  .catch((e) => console.error(e))
-  .finally(async () => await prisma.$disconnect());
+  .catch((e) => {
+    console.error('Error en seed:', e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
