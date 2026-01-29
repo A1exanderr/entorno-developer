@@ -14,6 +14,8 @@ npx tsc --init
 > Inicializar Prisma
 ```
 npx prisma init
+npx prisma migrate dev --name init
+npx prisma db seed
 ```
 > Dockerfile.nodejs.dev
 ```
