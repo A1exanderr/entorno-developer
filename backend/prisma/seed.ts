@@ -1,4 +1,4 @@
-import { PrismaPg } from '@prisma/adapter-pg'
+/* import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from './generated/prisma/client'
 import 'dotenv/config';
 
@@ -27,4 +27,5 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect();
-  });
+  }); */
+  import './seeders/DatabaseSeeder'

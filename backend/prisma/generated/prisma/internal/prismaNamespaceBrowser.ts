@@ -51,7 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  Usuario: 'Usuario',
+  Role: 'Role',
+  Permiso: 'Permiso',
+  RolUsuario: 'RolUsuario',
+  PermisoRol: 'PermisoRol'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,14 +74,54 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
+export const UsuarioScalarFieldEnum = {
   id: 'id',
-  createdAt: 'createdAt',
+  nombre: 'nombre',
+  a_paterno: 'a_paterno',
+  a_materno: 'a_materno',
+  ci: 'ci',
   email: 'email',
-  name: 'name'
+  password: 'password',
+  foto: 'foto',
+  hash_key: 'hash_key',
+  hash_expiry: 'hash_expiry',
+  estado: 'estado'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const RoleScalarFieldEnum = {
+  id: 'id',
+  rol: 'rol'
+} as const
+
+export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+export const PermisoScalarFieldEnum = {
+  id: 'id',
+  permiso: 'permiso',
+  descripcion: 'descripcion'
+} as const
+
+export type PermisoScalarFieldEnum = (typeof PermisoScalarFieldEnum)[keyof typeof PermisoScalarFieldEnum]
+
+
+export const RolUsuarioScalarFieldEnum = {
+  user_id: 'user_id',
+  rol_id: 'rol_id'
+} as const
+
+export type RolUsuarioScalarFieldEnum = (typeof RolUsuarioScalarFieldEnum)[keyof typeof RolUsuarioScalarFieldEnum]
+
+
+export const PermisoRolScalarFieldEnum = {
+  rol_id: 'rol_id',
+  permiso_id: 'permiso_id'
+} as const
+
+export type PermisoRolScalarFieldEnum = (typeof PermisoRolScalarFieldEnum)[keyof typeof PermisoRolScalarFieldEnum]
 
 
 export const SortOrder = {

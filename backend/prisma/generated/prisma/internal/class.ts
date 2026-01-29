@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client\"\n  output        = \"./generated/prisma\"\n  compilerBuild = \"fast\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now())\n  email     String   @unique\n  name      String?\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client\"\n  output        = \"./generated/prisma\"\n  compilerBuild = \"fast\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum Estado {\n  activo\n  desactivo\n}\n\nmodel Usuario {\n  id          Int     @id @default(autoincrement())\n  nombre      String\n  a_paterno   String?\n  a_materno   String?\n  ci          String?\n  email       String  @unique\n  password    String\n  foto        String?\n  hash_key    String?\n  hash_expiry String?\n  estado      Estado  @default(activo) // enum('activo','desactivo') -> prisma enum opcional\n\n  roles RolUsuario[]\n}\n\nmodel Role {\n  id       Int          @id @default(autoincrement())\n  rol      String\n  users    RolUsuario[]\n  permisos PermisoRol[]\n}\n\nmodel Permiso {\n  id          Int          @id @default(autoincrement())\n  permiso     String\n  descripcion String\n  roles       PermisoRol[]\n}\n\n// Relación muchos a muchos: Usuario <-> Rol\nmodel RolUsuario {\n  user_id Int\n  rol_id  Int\n\n  user Usuario @relation(fields: [user_id], references: [id])\n  rol  Role    @relation(fields: [rol_id], references: [id])\n\n  @@id([user_id, rol_id])\n}\n\n// Relación muchos a muchos: Rol <-> Permiso\nmodel PermisoRol {\n  rol_id     Int\n  permiso_id Int\n\n  rol     Role    @relation(fields: [rol_id], references: [id])\n  permiso Permiso @relation(fields: [permiso_id], references: [id])\n\n  @@id([rol_id, permiso_id])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Usuario\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nombre\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"a_paterno\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"a_materno\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ci\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"foto\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hash_key\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hash_expiry\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"estado\",\"kind\":\"enum\",\"type\":\"Estado\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"RolUsuario\",\"relationName\":\"RolUsuarioToUsuario\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"RolUsuario\",\"relationName\":\"RolUsuarioToRole\"},{\"name\":\"permisos\",\"kind\":\"object\",\"type\":\"PermisoRol\",\"relationName\":\"PermisoRolToRole\"}],\"dbName\":null},\"Permiso\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"permiso\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"descripcion\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"roles\",\"kind\":\"object\",\"type\":\"PermisoRol\",\"relationName\":\"PermisoToPermisoRol\"}],\"dbName\":null},\"RolUsuario\":{\"fields\":[{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rol_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"Usuario\",\"relationName\":\"RolUsuarioToUsuario\"},{\"name\":\"rol\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RolUsuarioToRole\"}],\"dbName\":null},\"PermisoRol\":{\"fields\":[{\"name\":\"rol_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"permiso_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rol\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"PermisoRolToRole\"},{\"name\":\"permiso\",\"kind\":\"object\",\"type\":\"Permiso\",\"relationName\":\"PermisoToPermisoRol\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -60,8 +60,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Usuarios
+   * const usuarios = await prisma.usuario.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -82,8 +82,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Usuarios
+ * const usuarios = await prisma.usuario.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -177,14 +177,54 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
+   * `prisma.usuario`: Exposes CRUD operations for the **Usuario** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
+    * // Fetch zero or more Usuarios
+    * const usuarios = await prisma.usuario.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
+  get usuario(): Prisma.UsuarioDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.role`: Exposes CRUD operations for the **Role** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Roles
+    * const roles = await prisma.role.findMany()
+    * ```
+    */
+  get role(): Prisma.RoleDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.permiso`: Exposes CRUD operations for the **Permiso** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Permisos
+    * const permisos = await prisma.permiso.findMany()
+    * ```
+    */
+  get permiso(): Prisma.PermisoDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.rolUsuario`: Exposes CRUD operations for the **RolUsuario** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RolUsuarios
+    * const rolUsuarios = await prisma.rolUsuario.findMany()
+    * ```
+    */
+  get rolUsuario(): Prisma.RolUsuarioDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.permisoRol`: Exposes CRUD operations for the **PermisoRol** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PermisoRols
+    * const permisoRols = await prisma.permisoRol.findMany()
+    * ```
+    */
+  get permisoRol(): Prisma.PermisoRolDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

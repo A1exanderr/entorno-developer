@@ -8,5 +8,9 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/User'
+export type * from './models/Usuario'
+export type * from './models/Role'
+export type * from './models/Permiso'
+export type * from './models/RolUsuario'
+export type * from './models/PermisoRol'
 export type * from './commonInputTypes'
