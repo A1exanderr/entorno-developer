@@ -8,7 +8,8 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "angular.ng-template"
+    "angular.ng-template",
+    "Quernest.prisma",
   ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
