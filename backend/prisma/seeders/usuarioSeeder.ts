@@ -29,5 +29,5 @@ export async function seedUsuarios(prisma: PrismaClient) {
     skipDuplicates: true,
   })
 
-  console.log('Usuarios creados ✅')
+  console.log('Usuarios creados')
 }

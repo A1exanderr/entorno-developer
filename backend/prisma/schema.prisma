@@ -37,14 +37,14 @@ model Usuario {
 
 model Role {
   id    Int    @id @default(autoincrement())
-  rol   String
+  rol   String @unique
   users RolUsuario[]
   permisos PermisoRol[]
 }
 
 model Permiso {
   id          Int    @id @default(autoincrement())
-  permiso     String
+  permiso     String @unique
   descripcion String
   roles       PermisoRol[]
 }
