@@ -1,2 +1,2 @@
 PORT=3000
-DATABASE_URL="postgresql://dba:sys@db_postgresql:5432/db_developer?schema=public"
+DATABASE_URL="postgresql://dba:sys@datos_pg:5432/db_developer?schema=public"
