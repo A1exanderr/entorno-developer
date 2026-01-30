@@ -55,6 +55,7 @@ sudo chown -R $USER:$USER backend frontend
 npm install @fastify/jwt @fastify/cookie bcrypt
 
 npm install -D @types/bcrypt
+
 "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts", erro
 funcional actual
 "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/app.ts",
