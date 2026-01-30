@@ -13,9 +13,9 @@ npx tsc --init
 ```
 > Inicializar Prisma
 ```
-npx prisma db seed
 npx prisma init
 npx prisma migrate dev --name init
+npx prisma generate
 npx prisma db seed
 npm install @prisma/adapter-pg tsx
 ```
