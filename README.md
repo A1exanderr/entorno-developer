@@ -19,6 +19,10 @@ npx prisma migrate dev --name init
 npx prisma generate
 npx prisma db seed
 ```
+> Verifica que la base esté sincronizada
+```
+npx prisma migrate status
+```
 > Dockerfile.nodejs.dev
 ```
 FROM node:20
