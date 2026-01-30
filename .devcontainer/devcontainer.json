@@ -9,11 +9,12 @@
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "angular.ng-template",
-    "Quernest.prisma",
+    "quernest.prisma"
   ],
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    //"terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "forwardPorts": [3000, 80],
+  "forwardPorts": [3000, 80]
   /* "postCreateCommand": "cd /app && npm install" */
 }
