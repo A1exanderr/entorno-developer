@@ -50,11 +50,34 @@ docker compose exec frontend ng g environments
 ```
 sudo chown -R $USER:$USER backend frontend
 ```
+> DESARROLLO NODEJS LOGIN
+```
+npm install @fastify/jwt @fastify/cookie bcrypt
 
-> 
 ```
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 > luego ejecuta el siguiente comando
 ```
 docker compose up --build
