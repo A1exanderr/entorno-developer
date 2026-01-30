@@ -54,8 +54,9 @@ sudo chown -R $USER:$USER backend frontend
 ```
 npm install @fastify/jwt @fastify/cookie bcrypt
 "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts", erro
-funcional
-"dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/app.ts"
+funcional actual
+"dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/app.ts",
+
 "dev": "tsx watch src/app.ts",
 ```
 
