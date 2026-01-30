@@ -13,11 +13,11 @@ npx tsc --init
 ```
 > Inicializar Prisma
 ```
+npm install @prisma/adapter-pg tsx
 npx prisma init
 npx prisma migrate dev --name init
 npx prisma generate
 npx prisma db seed
-npm install @prisma/adapter-pg tsx
 ```
 > Dockerfile.nodejs.dev
 ```
