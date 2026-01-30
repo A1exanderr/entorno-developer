@@ -1,7 +1,11 @@
 import { PrismaClient } from '../generated/prisma/client'
+import bcrypt from 'bcrypt'
 
 export async function seedUsuarios(prisma: PrismaClient) {
   console.log('Creando usuarios...')
+
+  const passwordPlano = 'password'
+  const passwordHash = await bcrypt.hash(passwordPlano, 12)
 
   const usuarios = await prisma.usuario.createMany({
     data: [
@@ -10,8 +14,8 @@ export async function seedUsuarios(prisma: PrismaClient) {
         a_paterno: 'Mamani',
         a_materno: 'Llojlla',
         ci: '12345678',
-        email: 'looveyouuu10@gmail.com',
-        password: '$2a$10$j4YA5toZ9Tu8.M2J7TnRuOFUynpiP52pRKtGOVLqX7PFyYB4F1U6q',
+        email: 'developer@gmail.com',
+        password: passwordHash,
         foto: 'avatar.png',
         estado: 'activo',
       },
@@ -21,7 +25,7 @@ export async function seedUsuarios(prisma: PrismaClient) {
         a_materno: 'Martínez',
         ci: '87654321',
         email: 'b@b.com',
-        password: '$2a$10$j4YA5toZ9Tu8.M2J7TnRuOFUynpiP52pRKtGOVLqX7PFyYB4F1U6q',
+        password: passwordHash,
         foto: 'avatar.png',
         estado: 'activo',
       },
