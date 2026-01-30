@@ -53,7 +53,10 @@ sudo chown -R $USER:$USER backend frontend
 > DESARROLLO NODEJS LOGIN
 ```
 npm install @fastify/jwt @fastify/cookie bcrypt
-
+"dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts", erro
+funcional
+"dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/app.ts"
+"dev": "tsx watch src/app.ts",
 ```
 
 

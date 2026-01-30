@@ -1,2 +1,4 @@
 PORT=3000
 DATABASE_URL="postgresql://dba:sys@datos_pg:5432/db_developer?schema=public"
+COOKIE_SECRET='developer_webSocket'
+JWT_SECRET='developer_web_Socket'
