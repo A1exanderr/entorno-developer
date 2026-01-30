@@ -11,8 +11,8 @@ import adminRoutes from './routes/admin.routes'
 
 const app = Fastify({ logger: true })
 // Registrar plugins
-await app.register(cookies)
 await app.register(jwt)
+await app.register(cookies)
 await app.register(prisma)
 await app.register(authGuard)
 // Registrar rutas

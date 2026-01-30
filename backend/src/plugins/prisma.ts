@@ -18,3 +18,4 @@ export default fp(async (fastify) => {
     await prisma.$disconnect()
   })
 })
+

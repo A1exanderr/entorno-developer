@@ -10,8 +10,8 @@ export default async function adminRoutes(app: FastifyInstance) {
         roleGuard(['admin']),
       ],
     },
-    async () => {
-      return { message: 'Bienvenido admin' }
+    async (request, reply) => {
+      return { message: `Bienvenido admin ${request.user?.email}` }
     }
   )
 }
