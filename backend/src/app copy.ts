@@ -1,15 +1,6 @@
 import Fastify from 'fastify'
 import "dotenv/config";
-//Registrar plugins y rutas
-// Plugins
-import prisma from './plugins/prisma'
-import jwt from './plugins/jwt'
-import cookies from './plugins/cookies'
-// Rutas
-import authRoutes from './routes/auth.routes'
-
 const fastify = Fastify({ logger: true })
-
 
 fastify.get('/', async (request, reply) => {
   return { mensaje: 'Hola Mundo desde Fastify + TypeScript 👋' }
