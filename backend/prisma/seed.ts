@@ -28,4 +28,4 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   }); */
-  import './seeders/DatabaseSeeder'
+  //import './seeders/DatabaseSeeder'
