@@ -1,10 +1,10 @@
 import { FastifyInstance } from 'fastify'
 import { login } from '../controllers/auth.controller'
 
-export default async function (fastify: FastifyInstance) {
-  fastify.post('/login', login)
+export default async function (app: FastifyInstance) {
+  app.post('/login', login)
 
-  fastify.post('/logout', async (_, reply) => {
+  app.post('/logout', async (_, reply) => {
     reply
       .clearCookie('token', { path: '/' })
       .send({ message: 'Logout exitoso' })

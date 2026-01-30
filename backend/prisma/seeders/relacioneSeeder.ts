@@ -3,7 +3,7 @@ import { PrismaClient } from '../generated/prisma/client'
 export async function seedRelaciones(prisma: PrismaClient) {
   console.log('Creando relaciones roles-usuarios y permisos-roles...')
 
-  const alex = await prisma.usuario.findUnique({ where: { email: 'looveyouuu10@gmail.com' } })
+  const alex = await prisma.usuario.findUnique({ where: { email: 'developer@gmail.com' } })
   const maria = await prisma.usuario.findUnique({ where: { email: 'b@b.com' } })
 
   const adminRole = await prisma.role.findUnique({ where: { rol: 'admin' } })
