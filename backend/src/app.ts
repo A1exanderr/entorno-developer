@@ -13,7 +13,9 @@ await app.register(cookies)
 await app.register(jwt)
 await app.register(prisma)
 // Registrar rutas
-await app.register(authRoutes, { prefix: '/auth' })
+const prefix = process.env.API_PREFIX || '/api';
+//await app.register(authRoutes, { prefix: '/auth' })
+await app.register(authRoutes, { prefix: `${prefix}/auth` })
 // Ruta de prueba
 app.get('/', async () => {
   return { mensaje: 'Hola Mundo desde Fastify + TypeScript' }
