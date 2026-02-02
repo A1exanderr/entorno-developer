@@ -1,4 +1,4 @@
-/* export function roleGuard(rolesPermitidos: string[]) {
+export function roleGuard(rolesPermitidos: string[]) {
   return async (request: any, reply: any) => {
     const userRoles = request.user.roles
 
@@ -10,8 +10,8 @@
       return reply.status(403).send({ message: 'Acceso denegado' })
     }
   }
-} */
-import { FastifyReply, FastifyRequest } from 'fastify'
+}
+/* import { FastifyReply, FastifyRequest } from 'fastify'
 
 export function roleGuard(roles: string[]) {
   return async (request: FastifyRequest, reply: FastifyReply) => {
@@ -26,4 +26,4 @@ export function roleGuard(roles: string[]) {
       return reply.status(403).send({ message: 'No autorizadoaa aqui' })
     }
   }
-}
+} */

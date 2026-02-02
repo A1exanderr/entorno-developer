@@ -1,4 +1,4 @@
-/* import fp from 'fastify-plugin'
+import fp from 'fastify-plugin'
 
 export default fp(async (app) => {
   app.decorate(
@@ -19,9 +19,9 @@ export default fp(async (app) => {
       }
     }
   )
-}) */
+})
 
-import fp from 'fastify-plugin'
+/* import fp from 'fastify-plugin'
 
 export default fp(async (app) => {
   app.decorate(
@@ -44,4 +44,4 @@ export default fp(async (app) => {
       }
     }
   )
-})
+}) */

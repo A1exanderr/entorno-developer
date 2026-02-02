@@ -68,7 +68,7 @@ export async function login(
 }
 */
 //VERSION 2
-/* import { FastifyRequest, FastifyReply } from 'fastify'
+import { FastifyRequest, FastifyReply } from 'fastify'
 import bcrypt from 'bcrypt'
 
 export async function login(
@@ -128,10 +128,11 @@ export async function login(
         roles,
       },
     })
-} */
+}
+
 
 //VERSION 3
-import { FastifyReply, FastifyRequest } from 'fastify'
+/* import { FastifyReply, FastifyRequest } from 'fastify'
 import bcrypt from 'bcrypt'
 
 export async function login(req: FastifyRequest, reply: FastifyReply) {
@@ -144,29 +145,6 @@ export async function login(req: FastifyRequest, reply: FastifyReply) {
   const isValid = await bcrypt.compare(password, user.password)
   if (!isValid) return reply.status(401).send({ message: 'Contraseña incorrecta' })
 
-  // Generar access token
-  /*const accessToken = req.server.jwt.sign({ userId: user.id, email: user.email }, { expiresIn: '15m' })
-  const refreshToken = req.server.jwt.sign({ userId: user.id, email: user.email }, { expiresIn: '7d' })
-
-  // Guardar refresh token en DB (opcional, para invalidar)
-  await prisma.usuario.update({
-    where: { id: user.id },
-    data: { hash_key: refreshToken },
-  })
-
-  reply
-    .setCookie('refresh_token', refreshToken, {
-      httpOnly: true,
-      secure: false, // true en producción con HTTPS
-      path: '/',
-      sameSite: 'strict',
-      maxAge: 60 * 60 * 24 * 7, // 7 días
-    })
-    .send({
-      message: 'Login correcto',
-      user: { id: user.id, email: user.email },
-      accessToken,
-    }) */
 // Generar access token
 const accessToken = req.server.jwt.sign(
   { userId: user.id, email: user.email, roles: user.roles?.map(r => r.rol.rol) || [] },
@@ -267,4 +245,4 @@ export async function logout(req: FastifyRequest, reply: FastifyReply) {
   reply
     .clearCookie('refresh_token', { path: '/' })
     .send({ message: 'Logout exitoso' })
-}
+} */
