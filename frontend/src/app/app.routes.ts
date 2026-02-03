@@ -12,11 +12,6 @@ export const routes: Routes = [
         path: 'login',
         component: Login,
     },
-    /* {
-        path: 'dashboard',
-        component: Dashboard,
-        canActivate: [authGuard],
-    }, */
     {
         path: 'panel',
         component: Panel,
