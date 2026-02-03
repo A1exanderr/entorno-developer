@@ -1,8 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  http = inject(HttpClient);
+  urlBase = environment.apiUrl;
   
+  auth(data:any){
+    return this.http.post(`${this.urlBase}/api/auth/login`, data);
+  }
 }
