@@ -40,6 +40,13 @@ export class Login {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  ngOnInit() {
+    this.authService.status().subscribe({
+      next: () => this.router.navigate(['/panel']),
+      error: () => {}
+    })
+  }
+
   public login() {
     /* console.log('Email:', this.email);
     console.log('Password:', this.password);
