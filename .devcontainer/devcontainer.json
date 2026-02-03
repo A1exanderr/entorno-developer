@@ -1,15 +1,16 @@
 {
   "name": "Developer",
   "dockerComposeFile": "../docker-compose.yml",
-  //"service": "frontend",
-  "service": "backend",
+  "service": "frontend",
+  //"service": "backend",
   "workspaceFolder": "/app",
   "extensions": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "angular.ng-template",
-    "quernest.prisma"
+    "Quernest.prisma",
+    "Prisma.prisma"
   ],
   "settings": {
     //"terminal.integrated.shell.linux": "/bin/bash"
