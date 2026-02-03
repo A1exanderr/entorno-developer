@@ -13,4 +13,10 @@ export class AuthService {
   auth(data:any){
     return this.http.post(`${this.urlBase}/auth/login`, data, { withCredentials: true });
   }
+  status(){
+    return this.http.get(`${this.urlBase}/auth/status`, { withCredentials: true });
+  }
+  logout(){
+    return this.http.post(`${this.urlBase}/auth/logout`, {}, { withCredentials: true });
+  }
 }
