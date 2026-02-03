@@ -11,6 +11,6 @@ export class AuthService {
   urlBase = environment.apiUrl;
   
   auth(data:any){
-    return this.http.post(`${this.urlBase}/api/auth/login`, data);
+    return this.http.post(`${this.urlBase}/auth/login`, data, { withCredentials: true });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 //ng prime
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
@@ -10,6 +10,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+//importamos el servicio
+import { AuthService } from '../../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -32,12 +34,22 @@ export class Login {
   email = '';
   password = '';
   remember = false;
+  mensaje = '';
+
+  authService = inject(AuthService);
 
   login() {
-    console.log('Email:', this.email);
+    /* console.log('Email:', this.email);
     console.log('Password:', this.password);
-    console.log('Recordar:', this.remember);
-
-    // Aquí luego conectas con tu backend
+    console.log('Recordar:', this.remember); */
+    this.authService.auth({"email": this.email, "password": this.password}).subscribe({
+      next: (resp: any) => {
+        this.mensaje = 'Login exitoso';
+        console.log(resp);
+      },
+      error: (err) => {
+        this.mensaje = err.error?.message || 'Datos incorrectos';
+      }
+    });
   }
 }
