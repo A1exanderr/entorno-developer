@@ -49,7 +49,7 @@ export class Login {
         this.mensaje = 'Login exitoso';
         //console.log(resp);
         // navegar al dashboard
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/panel']);
       },
       error: (err) => {
         //console.log("alkey",err.error?.message);
