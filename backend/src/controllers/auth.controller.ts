@@ -131,6 +131,19 @@ export async function login(
 }
 
 
+export async function status() {
+  return { authenticated: true }
+}
+
+export async function logout(
+  _: FastifyRequest,
+  reply: FastifyReply
+) {
+  reply
+    .clearCookie('token', { path: '/' })
+    .send({ message: 'Logout exitoso' })
+}
+
 //VERSION 3
 /* import { FastifyReply, FastifyRequest } from 'fastify'
 import bcrypt from 'bcrypt'

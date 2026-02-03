@@ -1,14 +1,27 @@
 import { FastifyInstance } from 'fastify'
-import { login } from '../controllers/auth.controller'
+import { login, status, logout } from '../controllers/auth.controller'
 
 export default async function (app: FastifyInstance) {
   app.post('/login', login)
 
-  app.post('/logout', async (_, reply) => {
+  /* app.post('/logout', async (_, reply) => {
     reply
       .clearCookie('token', { path: '/' })
       .send({ message: 'Logout exitoso' })
-  })
+  }) */
+  app.post('/logout', logout)
+
+  /* app.get('/status', {
+    preHandler: app.authGuard,
+  }, async () => {
+    return { authenticated: true }
+  }) */
+
+  app.get(
+    '/status',
+    { preHandler: app.authGuard },
+    status
+  )
 }
 
 /* import { FastifyInstance } from 'fastify';
