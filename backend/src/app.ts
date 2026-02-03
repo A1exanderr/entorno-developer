@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import "dotenv/config";
 // Plugins
+import corsPlugin from './plugins/cors'
 import prisma from './plugins/prisma'
 import jwt from './plugins/jwt'
 import cookies from './plugins/cookies'
@@ -11,8 +12,9 @@ import adminRoutes from './routes/admin.routes'
 
 const app = Fastify({ logger: true })
 // Registrar plugins
-await app.register(jwt)
+await app.register(corsPlugin)
 await app.register(cookies)
+await app.register(jwt)
 await app.register(prisma)
 await app.register(authGuard)
 // Registrar rutas
