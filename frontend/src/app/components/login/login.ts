@@ -1,4 +1,5 @@
 import { Component, signal, inject } from '@angular/core';
+import { Router } from '@angular/router'
 //ng prime
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
@@ -31,23 +32,27 @@ import { AuthService } from '../../servicios/auth/auth.service';
 })
 export class Login {
   protected readonly title = signal('Login');
-  email = '';
-  password = '';
-  remember = false;
-  mensaje = '';
+  public email:string = '';
+  public password:string = '';
+  public remember:boolean = false;
+  public mensaje:string = '';
 
-  authService = inject(AuthService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  login() {
+  public login() {
     /* console.log('Email:', this.email);
     console.log('Password:', this.password);
     console.log('Recordar:', this.remember); */
     this.authService.auth({"email": this.email, "password": this.password}).subscribe({
       next: (resp: any) => {
         this.mensaje = 'Login exitoso';
-        console.log(resp);
+        //console.log(resp);
+        // navegar al dashboard
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
+        //console.log("alkey",err.error?.message);
         this.mensaje = err.error?.message || 'Datos incorrectos';
       }
     });
