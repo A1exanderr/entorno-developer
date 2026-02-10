@@ -10,7 +10,7 @@ import { Configuracion } from '../configuracion/configuracion';
 import { EstructuraService } from '../../../servicios/estructura/estructura.service';
 @Component({
   selector: 'app-topbar',
-  imports: [RouterModule, CommonModule, StyleClassModule, Configuracion],
+  imports: [RouterModule, CommonModule, StyleClassModule ], //Configuracion
   templateUrl: './topbar.html',
   styleUrl: './topbar.scss',
 })
