@@ -56,7 +56,8 @@ export class Login {
         this.mensaje = 'Login exitoso';
         //console.log(resp);
         // navegar al dashboard
-        this.router.navigate(['/panel']);
+        //this.router.navigate(['/panel']);
+        this.router.navigate(['/base']);
       },
       error: (err) => {
         //console.log("alkey",err.error?.message);
