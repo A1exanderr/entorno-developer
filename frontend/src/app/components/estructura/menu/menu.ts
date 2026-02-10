@@ -18,6 +18,62 @@ export class Menu {
     ngOnInit() {
         this.model = [
             {
+                label: 'Panel',
+                items: [{ label: 'inicio', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
+            },
+            {
+                label: 'UI Components',
+                items: [
+                    { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
+                    { label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
+                    { label: 'Button', icon: 'pi pi-fw pi-mobile', class: 'rotated-icon', routerLink: ['/uikit/button'] }
+                ]
+            },
+            {
+                label: 'Reportes',
+                icon: 'pi pi-fw pi-briefcase',
+                path: '/pages',
+                items: [
+                    {
+                        label: 'Landing',
+                        icon: 'pi pi-fw pi-globe',
+                        routerLink: ['/landing']
+                    },
+                    {
+                        label: 'Auth',
+                        icon: 'pi pi-fw pi-user',
+                        path: '/auth',
+                        items: [
+                            {
+                                label: 'Login',
+                                icon: 'pi pi-fw pi-sign-in',
+                                routerLink: ['/auth/login']
+                            },
+                            {
+                                label: 'Error',
+                                icon: 'pi pi-fw pi-times-circle',
+                                routerLink: ['/auth/error']
+                            },
+                            {
+                                label: 'Access Denied',
+                                icon: 'pi pi-fw pi-lock',
+                                routerLink: ['/auth/access']
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Crud',
+                        icon: 'pi pi-fw pi-pencil',
+                        routerLink: ['/pages/crud']
+                    }
+                ]
+            }
+        ];
+    }
+    
+    /* ngOnInit() {
+        this.model = [
+            {
                 label: 'Home',
                 items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
@@ -158,5 +214,5 @@ export class Menu {
                 ]
             }
         ];
-    }
+    } */
 }
