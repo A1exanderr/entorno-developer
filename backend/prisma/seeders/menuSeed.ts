@@ -45,6 +45,7 @@ export const menuData = [
     label: "Reportes",
     icon: "pi pi-fw pi-briefcase",
     is_group: true,
+    permisos: ["reporte.submenu"],
     children: [
       {
         label: "Ventas",
@@ -70,6 +71,7 @@ export const menuData = [
     label: "Usuarios",
     icon: "pi pi-fw pi-briefcase",
     is_group: true,
+    permisos: ["user.submenu"],
     children: [
       {
         label: "Crear",
