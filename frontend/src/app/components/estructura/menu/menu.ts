@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //prime
 import { MenuItem } from 'primeng/api';
 //componente
 import { Menuitem } from '../menuitem/menuitem';
+//importtar servicio
+import { AuthService } from '../../../servicios/auth/auth.service';
 @Component({
   selector: 'app-menu',
   imports: [CommonModule, RouterModule, Menuitem],
@@ -12,10 +14,22 @@ import { Menuitem } from '../menuitem/menuitem';
   styleUrl: './menu.scss',
 })
 export class Menu {
-  
-    model: MenuItem[] = [];
 
+    model: MenuItem[] = [];
+    private authService = inject(AuthService);
     ngOnInit() {
+        this.authService.menu().subscribe({
+        next: (resp: any) => {
+            console.log(resp);
+            this.model = resp;
+        },
+        error: (err) => {
+            console.log(err.error?.message || 'Datos incorrectos');
+        }
+        });
+        //this.model =
+    }
+    /* ngOnInit() {
         this.model = [
             {
                 label: 'Panel',
@@ -69,8 +83,7 @@ export class Menu {
                 ]
             }
         ];
-    }
-    
+    } */
     /* ngOnInit() {
         this.model = [
             {

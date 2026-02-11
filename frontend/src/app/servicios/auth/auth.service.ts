@@ -19,4 +19,8 @@ export class AuthService {
   logout(){
     return this.http.post(`${this.urlBase}/auth/logout`, {}, { withCredentials: true });
   }
+  //menu temportal
+  menu(){
+    return this.http.get(`${this.urlBase}/admin/menu`, { withCredentials: true });
+  }
 }

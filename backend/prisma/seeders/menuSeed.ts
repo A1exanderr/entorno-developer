@@ -33,7 +33,8 @@
   }
 ]
  */
-export const menuData = [
+/* FUNCIONAL OPTIMO */
+/* export const menuData = [
   {
     label: "Panel",
     icon: "pi pi-fw pi-briefcase",
@@ -65,6 +66,75 @@ export const menuData = [
         route: "/reporte/inventarios",
         permisos: ["reporte.inventarios"]
       }
+    ]
+  },
+  {
+    label: "Usuarios",
+    icon: "pi pi-fw pi-briefcase",
+    is_group: true,
+    permisos: ["user.submenu"],
+    children: [
+      {
+        label: "Crear",
+        icon: "pi pi-fw pi-sign-in",
+        route: "/user/create",
+        permisos: ["user.create"]
+      },
+      {
+        label: "Eliminar",
+        icon: "pi pi-fw pi-times-circle",
+        route: "/user/eliminar",
+        permisos: ["user.eliminar"]
+      },
+      {
+        label: "Editar",
+        icon: "pi pi-fw pi-lock",
+        route: "/user/editar",
+        permisos: ["user.editar"]
+      }
+    ]
+  }
+] */
+/* Version pro */
+export const menuData = [
+  {
+    label: "MENU",
+    is_group: true,
+    permisos: ["panel.index"],
+    children: [
+      {
+        label: "Panel",
+        icon: "pi pi-fw pi-sign-in",
+        route: "/panel/index",
+        permisos: ["panel.index"]
+      },
+      {
+        label: "Reportes",
+        icon: "pi pi-fw pi-briefcase",
+        is_group: true,
+        permisos: ["reporte.submenu"],
+        route: "/reporte",
+        children: [
+          {
+            label: "Ventas",
+            icon: "pi pi-fw pi-sign-in",
+            route: "/reporte/ventas",
+            permisos: ["reporte.ventas"]
+          },
+          {
+            label: "Personas",
+            icon: "pi pi-fw pi-times-circle",
+            route: "/reporte/personas",
+            permisos: ["reporte.personas"]
+          },
+          {
+            label: "inventarios",
+            icon: "pi pi-fw pi-lock",
+            route: "/reporte/inventarios",
+            permisos: ["reporte.inventarios"]
+          }
+        ]
+      },  
     ]
   },
   {
