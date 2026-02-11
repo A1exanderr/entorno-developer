@@ -102,7 +102,8 @@ export async function login(
     }
 
     // Extraer roles
-    const roles = user.roles.map((r: any) => r.rol.rol)
+    //const roles = user.roles.map((r: any) => r.rol.rol)
+    const roles = user.roles.map((r: any) => r.rol.id)
 
     // 1 hora en segundos
     const ONE_HOUR = 60 * 60
