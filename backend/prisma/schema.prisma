@@ -47,6 +47,7 @@ model Permiso {
   permiso     String @unique
   descripcion String
   roles       PermisoRol[]
+  menus       MenuPermiso[]
 }
 
 // Relación muchos a muchos: Usuario <-> Rol
@@ -69,4 +70,30 @@ model PermisoRol {
   permiso Permiso @relation(fields: [permiso_id], references: [id])
 
   @@id([rol_id, permiso_id])
+}
+
+// Menu
+model MenuItem {
+  id        Int       @id @default(autoincrement())
+  label     String
+  icon      String?
+  route     String?   @unique// null si es grupo
+  parent_id Int?
+  order     Int       @default(0)
+  is_group  Boolean   @default(false)
+
+  parent    MenuItem?  @relation("MenuHierarchy", fields: [parent_id], references: [id])
+  children  MenuItem[] @relation("MenuHierarchy")
+
+  permisos  MenuPermiso[]
+}
+
+model MenuPermiso {
+  menu_id    Int
+  permiso_id Int
+
+  menu    MenuItem @relation(fields: [menu_id], references: [id])
+  permiso Permiso  @relation(fields: [permiso_id], references: [id])
+
+  @@id([menu_id, permiso_id])
 }

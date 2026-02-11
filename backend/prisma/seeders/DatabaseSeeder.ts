@@ -6,6 +6,7 @@ import { seedUsuarios } from './usuarioSeeder'
 import { seedRoles } from './roleSeeder'
 import { seedPermisos } from './permisoSeeder'
 import { seedRelaciones } from './relacioneSeeder'
+import { seedMenuItem } from './menuItemSeeder'
 
 const adapter = new PrismaPg({ 
   connectionString: process.env.DATABASE_URL 
@@ -18,6 +19,7 @@ async function main() {
   await seedRoles(prisma)
   await seedPermisos(prisma)
   await seedRelaciones(prisma)
+  await seedMenuItem(prisma)
 }
 
 main()
