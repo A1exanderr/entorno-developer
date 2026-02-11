@@ -6,7 +6,7 @@ export async function seedPermisos(prisma: PrismaClient) {
   const permisosData = [
     { permiso: 'user.create', descripcion: 'Permiso para crear usuarios' },
     { permiso: 'user.eliminar', descripcion: 'Permiso para eliminar usuarios' },
-    { permiso: 'user.edit', descripcion: 'Permiso para editar usuarios' },
+    { permiso: 'user.editar', descripcion: 'Permiso para editar usuarios' },
     { permiso: 'user.index', descripcion: 'Permiso para ver usuarios' },
     // ... agrega todos los demás permisos aquí
   ]
