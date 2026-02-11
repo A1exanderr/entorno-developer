@@ -65,5 +65,30 @@ export const menuData = [
         permisos: ["reporte.inventarios"]
       }
     ]
+  },
+  {
+    label: "Usuarios",
+    icon: "pi pi-fw pi-briefcase",
+    is_group: true,
+    children: [
+      {
+        label: "Crear",
+        icon: "pi pi-fw pi-sign-in",
+        route: "/user/create",
+        permisos: ["user.create"]
+      },
+      {
+        label: "Eliminar",
+        icon: "pi pi-fw pi-times-circle",
+        route: "/user/eliminar",
+        permisos: ["user.eliminar"]
+      },
+      {
+        label: "Editar",
+        icon: "pi pi-fw pi-lock",
+        route: "/user/editar",
+        permisos: ["user.editar"]
+      }
+    ]
   }
 ]
