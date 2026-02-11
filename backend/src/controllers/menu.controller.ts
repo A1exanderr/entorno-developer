@@ -172,7 +172,7 @@ interface MenuOutput {
   //id: number
   label: string
   icon?: string | null
-  routerLink?: string
+  routerLink?: string[]
   path?: string | null
   items?: MenuOutput[]
 }
@@ -281,7 +281,7 @@ export async function menu(request: FastifyRequest, reply: FastifyReply) {
           if (item.is_group) {
             clean.path = item.route      // grupos usan path
           } else {
-            clean.routerLink = item.route // hijos usan routerLink
+            clean.routerLink = [item.route] //item.route // hijos usan routerLink
           }
         }
 
