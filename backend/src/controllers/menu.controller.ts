@@ -173,6 +173,7 @@ interface MenuOutput {
   label: string
   icon?: string | null
   routerLink?: string
+  path?: string | null
   items?: MenuOutput[]
 }
 
@@ -273,7 +274,15 @@ export async function menu(request: FastifyRequest, reply: FastifyReply) {
           //id: item.id,
           label: item.label,
           icon: item.icon ?? undefined,
-          routerLink: item.routerLink ?? undefined
+          //routerLink: item.routerLink ?? undefined
+        }
+        // Aquí está la lógica que quieres
+        if (item.route) {
+          if (item.is_group) {
+            clean.path = item.route      // grupos usan path
+          } else {
+            clean.routerLink = item.route // hijos usan routerLink
+          }
         }
 
         if (item.items && item.items.length) {
