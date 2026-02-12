@@ -48,19 +48,12 @@ export class Login {
   }
 
   public login() {
-    /* console.log('Email:', this.email);
-    console.log('Password:', this.password);
-    console.log('Recordar:', this.remember); */
     this.authService.auth({"email": this.email, "password": this.password}).subscribe({
       next: (resp: any) => {
         this.mensaje = 'Login exitoso';
-        //console.log(resp);
-        // navegar al dashboard
         this.router.navigate(['/panel']);
-        //this.router.navigate(['/base']);
       },
       error: (err) => {
-        //console.log("alkey",err.error?.message);
         this.mensaje = err.error?.message || 'Datos incorrectos';
       }
     });
