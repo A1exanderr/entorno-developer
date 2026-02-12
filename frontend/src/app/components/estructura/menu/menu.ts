@@ -22,7 +22,7 @@ export class Menu {
     ngOnInit() {
         this.menuService.menu().subscribe({
         next: (resp: any) => {
-            console.log(resp);
+            //console.log(resp);
             this.model = resp;
             this.cd.detectChanges(); 
         },
