@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { roleGuard } from '../plugins/roleGuard'
 
-import { listar, crear, editar, eliminar } from '../controllers/roles.controller'
+import { listar, crear, editar, eliminar, obtenerRoleConPermisos } from '../controllers/roles.controller'
 
 export default async function rolesRoutes(app: FastifyInstance) {
   
@@ -25,5 +25,10 @@ export default async function rolesRoutes(app: FastifyInstance) {
     '/eliminar',
     { preHandler: app.authGuard },
     eliminar
+  )
+  app.post(
+    '/obtenerRolesPermisos',
+    { preHandler: app.authGuard },
+    obtenerRoleConPermisos
   )
 }
