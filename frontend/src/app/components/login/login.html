@@ -31,6 +31,7 @@
               [(ngModel)]="password"
               [feedback]="false"
               toggleMask="true"
+              (keydown.enter)="login()"
               >
             </p-password>
             <label for="on_label">Contraseña</label>
