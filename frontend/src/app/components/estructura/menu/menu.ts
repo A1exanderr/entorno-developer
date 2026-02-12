@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //prime
@@ -17,11 +17,14 @@ export class Menu {
 
     model: MenuItem[] = [];
     private authService = inject(AuthService);
+    private cd = inject(ChangeDetectorRef);
+
     ngOnInit() {
         this.authService.menu().subscribe({
         next: (resp: any) => {
             console.log(resp);
             this.model = resp;
+            this.cd.detectChanges(); 
         },
         error: (err) => {
             console.log(err.error?.message || 'Datos incorrectos');
