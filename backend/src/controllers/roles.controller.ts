@@ -410,6 +410,7 @@ export async function eliminar(request: FastifyRequest, reply: FastifyReply) {
     return reply.status(500).send({ message: 'Error eliminando rol' });
   }
 }
+
 // obtenerRoleConPermisos
 export async function obtenerRoleConPermisos(
   request: FastifyRequest,
