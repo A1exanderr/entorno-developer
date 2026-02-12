@@ -9,6 +9,7 @@ import authGuard from './plugins/authGuard'
 // Rutas
 import authRoutes from './routes/auth.routes'
 import adminRoutes from './routes/admin.routes'
+import rolesRoutes from './routes/roles.routes'
 
 const app = Fastify({ logger: true })
 // Registrar plugins
@@ -22,6 +23,7 @@ const prefix = process.env.API_PREFIX || '/api';
 //await app.register(authRoutes, { prefix: '/auth' })
 await app.register(authRoutes, { prefix: `${prefix}/auth` })
 await app.register(adminRoutes, { prefix: `${prefix}/admin` })
+await app.register(rolesRoutes, { prefix: `${prefix}/roles` })
 // Ruta de prueba
 app.get('/', async () => {
   return { mensaje: 'Hola Mundo desde Fastify + TypeScript' }
