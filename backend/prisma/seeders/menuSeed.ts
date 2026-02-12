@@ -105,7 +105,7 @@ export const menuData = [
       {
         label: "Panel",
         icon: "pi pi-fw pi-sign-in",
-        route: "/panel/index",
+        route: "/panel",
         permisos: ["panel.index"]
       },
       {
