@@ -109,6 +109,18 @@ export const menuData = [
         permisos: ["panel.index"]
       },
       {
+        label: "Usuarios",
+        icon: "pi pi-fw pi-users",
+        route: "/usuarios",
+        permisos: ["user.listar"]
+      },
+      {
+        label: "Roles",
+        icon: "pi pi-fw pi-key",
+        route: "/roles",
+        permisos: ["rol.listar"]
+      },
+      {
         label: "Reportes",
         icon: "pi pi-fw pi-briefcase",
         is_group: true,
