@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { Login } from './components/login/login';
-import { Panel } from './components/panel/panel';
-import { Layout } from './components/estructura/layout/layout';
 import { authGuard } from './core/guards/auth-guard'
+import { Login } from './components/login/login';
+import { Layout } from './components/estructura/layout/layout';
+import { Panel } from './components/panel/panel';
+import { Roles } from './components/roles/roles';
+
 export const routes: Routes = [
 
     //Login sin layout
@@ -20,7 +22,7 @@ export const routes: Routes = [
             { path: 'panel', component: Panel },
             // aquí irán todas tus páginas protegidas
             // { path: 'usuarios', component: Usuarios },
-            // { path: 'roles', component: Roles },
+            { path: 'roles', component: Roles },
             { path: '', redirectTo: 'panel', pathMatch: 'full' }
         ]
     },
