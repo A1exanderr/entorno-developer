@@ -131,7 +131,8 @@ export async function editar(request: FastifyRequest, reply: FastifyReply) {
 export async function eliminar(request: FastifyRequest, reply: FastifyReply) {
   try {
     const prisma = request.server.prisma;
-    const { id } = request.params as { id: string };
+    //const { id } = request.params as { id: string };
+    const { id } = request.body as { id: string };
 
     const roleId = Number(id);
 
