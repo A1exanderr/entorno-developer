@@ -1,1 +1,39 @@
-<p>roles works!</p>
+<p-table 
+  [value]="datos_roles"
+  [paginator]="true"
+  [rows]="5"
+  responsiveLayout="scroll">
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>N°</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-rol let-rowIndex="rowIndex">
+    <tr>
+      <td>{{ rowIndex + 1 }}</td>
+      <td>{{ rol.rol }}</td>
+      <td>
+        <button 
+          pButton 
+          icon="pi pi-pencil"
+          severity="info"
+          class="p-button-sm"
+          (click)="editarRol(rol.id)">
+        </button>
+
+        <button 
+          pButton 
+          icon="pi pi-trash"
+          severity="danger"
+          class="p-button-sm ml-2"
+          (click)="eliminarRol(rol.id)">
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>

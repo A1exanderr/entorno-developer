@@ -1,8 +1,8 @@
 {
   "name": "Developer",
   "dockerComposeFile": "../docker-compose.yml",
-  "service": "frontend",
-  //"service": "backend",
+  //"service": "frontend",
+  "service": "backend",
   "workspaceFolder": "/app",
   "extensions": [
     "dbaeumer.vscode-eslint",
