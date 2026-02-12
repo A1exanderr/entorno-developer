@@ -1,34 +1,3 @@
-/* import { Routes } from '@angular/router';
-import { Login } from './components/login/login';
-import { Panel } from './components/panel/panel';
-import { Layout } from './components/estructura/layout/layout';
-import { authGuard } from './core/guards/auth-guard'
-export const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-    },
-    {
-        path: 'login',
-        component: Login,
-    },
-    {
-        path: 'panel',
-        component: Panel,
-        canActivate: [authGuard],
-    },
-    {
-        path: 'base',
-        component: Layout,
-        canActivate: [authGuard],
-    },
-    {
-        path: '**',
-        redirectTo: 'login',
-    },
-];
- */
 import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Panel } from './components/panel/panel';
@@ -36,13 +5,13 @@ import { Layout } from './components/estructura/layout/layout';
 import { authGuard } from './core/guards/auth-guard'
 export const routes: Routes = [
 
-    // 🔓 Login sin layout
+    //Login sin layout
     {
         path: 'login',
         component: Login
     },
 
-    // 🔐 Todo lo protegido usa Layout
+    //Todo lo protegido usa Layout
     {
         path: '',
         component: Layout,
