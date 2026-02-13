@@ -46,39 +46,6 @@ export class Roles {
     });
   }
 
-  public modalEditar: boolean = false;
-  public rolSeleccionado: any = {};
-  public editarRol(rol:any)
-  {
-    this.rolSeleccionado = { ...rol };
-    this.modalEditar = true;
-    this.rolesService.obtenerPermisos().subscribe({
-      next: (resp: any) => {
-        //console.log(resp);
-        //this.datos_roles = resp;
-        console.log(resp);
-        this.permisos = resp;
-        
-        //this.cd.detectChanges(); 
-      },
-      error: (err) => {
-        console.log(err.error?.message || 'Datos incorrectos');
-      }
-    });
-  }
-  actualizarRol() {
-
-    this.datos_roles.update(lista =>
-      lista.map(r =>
-        r.id === this.rolSeleccionado.id
-          ? { ...this.rolSeleccionado }
-          : r
-      )
-    );
-
-    this.modalEditar = false;
-  }
-
   public modalCrear = false;
   public permisos: any[] = [];
   public rol:string = '';
@@ -133,6 +100,40 @@ export class Roles {
       }
     });
   }
+
+  public modalEditar: boolean = false;
+  public rolSeleccionado: any = {};
+  public permisos_user: any[] = [];
+  public editarRol(rol:any)
+  {
+    this.rolSeleccionado = { ...rol };
+    this.modalEditar = true;
+    this.rolesService.obtenerRolesPermisos({"id":rol.id}).subscribe({
+      next: (resp: any) => {
+        //console.log(resp);
+        this.permisos_user = resp;
+        console.log(resp);
+        //this.permisos = resp;
+        
+        this.cd.detectChanges(); 
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Datos incorrectos');
+      }
+    });
+  }
+  actualizarRol() {
+
+    this.datos_roles.update(lista =>
+      lista.map(r =>
+        r.id === this.rolSeleccionado.id
+          ? { ...this.rolSeleccionado }
+          : r
+      )
+    );
+
+    this.modalEditar = false;
+  }
 }
 /*
 this.rolesService.crear().subscribe({
@@ -145,13 +146,13 @@ this.rolesService.crear().subscribe({
 }); 
 */
 /* 
-Ricardo pollo 25
+Ricardo pollo 25 + 10
 David  pollo 25
-Noemi pollo 25 cancelado
 Alex pollo 25
 Brayan chancho 40
+Briamar salas 30 
 Rodrigo chancho 40 cancelado
 Carlos enrique 25 cancelado
-Briamar salas 30 
+Noemi pollo 25 cancelado
 ====
 */
