@@ -22,7 +22,7 @@
           icon="pi pi-pencil"
           severity="info"
           class="p-button-sm"
-          (click)="editarRol(rol.id)">
+          (click)="editarRol(rol)">
         </button>
 
         <button 
@@ -37,3 +37,34 @@
   </ng-template>
 
 </p-table>
+
+
+<!-- editar -->
+<p-dialog 
+  header="Editar Rol"
+  [modal]="true"
+  [(visible)]="modalEditar"
+  [style]="{ width: '25rem' }">
+
+  <div class="flex items-center gap-4 mb-4">
+    <label class="font-semibold w-24">Rol</label>
+    <input
+      pInputText
+      class="flex-auto"
+      [(ngModel)]="rolSeleccionado.rol"
+    />
+  </div>
+
+  <div class="flex justify-center gap-2">
+    <p-button 
+      label="Cancel"
+      severity="danger"
+      (click)="modalEditar = false">
+    </p-button>
+    <p-button 
+      label="Actualizar"
+      (click)="actualizarRol()">
+    </p-button>
+  </div>
+
+</p-dialog>

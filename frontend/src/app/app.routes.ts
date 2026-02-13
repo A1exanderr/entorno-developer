@@ -11,6 +11,8 @@ export const routes: Routes = [
         path: 'login',
         component: Login
     },
+    // raiz
+    { path: '', redirectTo: 'login', pathMatch: 'full', },
     //Todo lo protegido usa Layout
     {
         path: '',
@@ -24,9 +26,6 @@ export const routes: Routes = [
             { path: '', redirectTo: 'panel', pathMatch: 'full' }
         ]
     },
-    // raiz
-    //{ path: '', redirectTo: 'panel', pathMatch: 'full', },
-    { path: '', redirectTo: 'login', pathMatch: 'full', },
     // fallback
     { path: '**', redirectTo: 'login' }
 ];

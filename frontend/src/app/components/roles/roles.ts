@@ -1,4 +1,5 @@
 import { Component, inject, ChangeDetectorRef, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 //importtar servicio
 import { RolesService } from '../../servicios/features/roles.service';
 //ngprime
@@ -7,10 +8,11 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 //ng-prime editar
 import { Dialog, DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-roles',
-  imports: [CommonModule, TableModule, ButtonModule, DialogModule],
+  imports: [CommonModule, FormsModule, TableModule, ButtonModule, DialogModule, InputTextModule],
   templateUrl: './roles.html',
   styleUrl: './roles.scss',
 })
@@ -51,4 +53,35 @@ export class Roles {
       }
     });
   }
+
+  public modalEditar: boolean = false;
+  public rolSeleccionado: any = {};
+  public editarRol(rol:any)
+  {
+    this.rolSeleccionado = { ...rol }; 
+    this.modalEditar = true;
+  }
+  actualizarRol() {
+
+    this.datos_roles.update(lista =>
+      lista.map(r =>
+        r.id === this.rolSeleccionado.id
+          ? { ...this.rolSeleccionado }
+          : r
+      )
+    );
+
+    this.modalEditar = false;
+  }
 }
+/* 
+Ricardo pollo 25
+David  pollo 25
+Noemi pollo 25
+Alex pollo 25
+Brayan chancho 40
+Rodrigo chancho 40 cancelado
+Carlos enrique 25 cancelado
+Briamar salas 30 
+====
+*/
