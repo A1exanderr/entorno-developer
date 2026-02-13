@@ -6,13 +6,11 @@ import { Panel } from './components/panel/panel';
 import { Roles } from './components/roles/roles';
 
 export const routes: Routes = [
-
     //Login sin layout
     {
         path: 'login',
         component: Login
     },
-
     //Todo lo protegido usa Layout
     {
         path: '',
@@ -26,10 +24,9 @@ export const routes: Routes = [
             { path: '', redirectTo: 'panel', pathMatch: 'full' }
         ]
     },
-
+    // raiz
+    //{ path: '', redirectTo: 'panel', pathMatch: 'full', },
+    { path: '', redirectTo: 'login', pathMatch: 'full', },
     // fallback
-    {
-        path: '**',
-        redirectTo: 'login'
-    }
+    { path: '**', redirectTo: 'login' }
 ];
