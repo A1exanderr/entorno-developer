@@ -547,3 +547,30 @@ export async function obtenerRoleConPermisos(
   }
 }
  */
+export async function listarPermisos(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
+  try {
+    const prisma = request.server.prisma;
+
+    const permisos = await prisma.permiso.findMany({
+      orderBy: { id: 'asc' }
+    });
+
+    return reply.send(
+      permisos.map(p => ({
+        id: p.id,
+        permiso: p.permiso,
+        descripcion: p.descripcion,
+        asignado: false
+      }))
+    );
+
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send({
+      message: 'Error listando permisos'
+    });
+  }
+}
