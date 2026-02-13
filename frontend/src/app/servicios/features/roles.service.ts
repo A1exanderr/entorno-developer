@@ -24,4 +24,7 @@ export class RolesService {
   obtenerRolesPermisos(data:any){
     return this.http.post(`${this.urlBase}/roles/obtenerRolesPermisos`, data, { withCredentials: true });
   }
+  obtenerPermisos(){
+    return this.http.get(`${this.urlBase}/roles/listarPermisos`, { withCredentials: true });
+  }
 }

@@ -9,10 +9,12 @@ import { CommonModule } from '@angular/common';
 //ng-prime editar
 import { Dialog, DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+//crear
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-roles',
-  imports: [CommonModule, FormsModule, TableModule, ButtonModule, DialogModule, InputTextModule],
+  imports: [CommonModule, FormsModule, TableModule, ButtonModule, DialogModule, InputTextModule, CheckboxModule],
   templateUrl: './roles.html',
   styleUrl: './roles.scss',
 })
@@ -28,7 +30,7 @@ export class Roles {
         //console.log(resp);
         //this.datos_roles = resp;
         this.datos_roles.set(resp);
-        this.cd.detectChanges(); 
+        //this.cd.detectChanges(); 
       },
       error: (err) => {
         console.log(err.error?.message || 'Datos incorrectos');
@@ -58,8 +60,21 @@ export class Roles {
   public rolSeleccionado: any = {};
   public editarRol(rol:any)
   {
-    this.rolSeleccionado = { ...rol }; 
+    this.rolSeleccionado = { ...rol };
     this.modalEditar = true;
+    this.rolesService.obtenerPermisos().subscribe({
+      next: (resp: any) => {
+        //console.log(resp);
+        //this.datos_roles = resp;
+        console.log(resp);
+        this.permisos = resp;
+        
+        //this.cd.detectChanges(); 
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Datos incorrectos');
+      }
+    });
   }
   actualizarRol() {
 
@@ -73,11 +88,33 @@ export class Roles {
 
     this.modalEditar = false;
   }
+
+  public modalCrear = false;
+  public permisos: any[] = [];
+  public permiso:string = '';
+  public crear(){
+    this.permiso = '';
+    this.modalCrear = true;
+    this.rolesService.obtenerPermisos().subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        this.permisos = resp;
+        this.cd.detectChanges(); 
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Datos incorrectos');
+      }
+    });
+    console.log();
+  }
+  public guardarRol(){
+
+  }
 }
 /* 
 Ricardo pollo 25
 David  pollo 25
-Noemi pollo 25
+Noemi pollo 25 cancelado
 Alex pollo 25
 Brayan chancho 40
 Rodrigo chancho 40 cancelado
