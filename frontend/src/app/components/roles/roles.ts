@@ -25,17 +25,7 @@ export class Roles {
   //public datos_roles: any[] = [];
   public datos_roles = signal<any[]>([]);
   ngOnInit() {
-    this.rolesService.listar().subscribe({
-      next: (resp: any) => {
-        //console.log(resp);
-        //this.datos_roles = resp;
-        this.datos_roles.set(resp);
-        //this.cd.detectChanges(); 
-      },
-      error: (err) => {
-        console.log(err.error?.message || 'Datos incorrectos');
-      }
-    });
+    this.cargarRoles();
   }
 
   public eliminarRol(id:number)
@@ -91,13 +81,14 @@ export class Roles {
 
   public modalCrear = false;
   public permisos: any[] = [];
-  public permiso:string = '';
+  public rol:string = '';
+
   public crear(){
-    this.permiso = '';
+    this.rol = '';
     this.modalCrear = true;
     this.rolesService.obtenerPermisos().subscribe({
       next: (resp: any) => {
-        console.log(resp);
+        //console.log(resp);
         this.permisos = resp;
         this.cd.detectChanges(); 
       },
@@ -105,12 +96,54 @@ export class Roles {
         console.log(err.error?.message || 'Datos incorrectos');
       }
     });
-    console.log();
   }
   public guardarRol(){
 
+    if (!this.rol || this.rol.trim() === '') {
+      console.log("Debe ingresar un nombre de rol");
+      return;
+    }
+
+    const permisosSeleccionados = this.permisos
+      .filter(p => p.asignado)
+      .map(p => p.id);
+
+    this.rolesService.crear({
+      rol: this.rol.trim(),
+      permisos: permisosSeleccionados
+    }).subscribe({
+      next: (resp: any) => {
+        this.cargarRoles();
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Datos incorrectos');
+      }
+    });
+    this.rol = "";
+    this.modalCrear = false;
+  }
+
+  private cargarRoles() {
+    this.rolesService.listar().subscribe({
+      next: (resp: any) => {
+        this.datos_roles.set(resp);
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Error cargando roles');
+      }
+    });
   }
 }
+/*
+this.rolesService.crear().subscribe({
+  next: (resp: any) => {
+    console.log(resp); 
+  },
+  error: (err) => {
+    console.log(err.error?.message || 'Datos incorrectos');
+  }
+}); 
+*/
 /* 
 Ricardo pollo 25
 David  pollo 25
