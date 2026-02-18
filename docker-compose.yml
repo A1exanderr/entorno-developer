@@ -1,7 +1,7 @@
 services:
-  db_posgresql:
+  db_ce:
     image: postgres:15
-    container_name: datos_pg
+    container_name: db_ce
     environment:
       POSTGRES_DB: db_developer
       POSTGRES_USER: dba
@@ -9,34 +9,32 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-  backend:
+      - pgce:/var/lib/postgresql/data
+  backend_ce:
     build:
-      context: ./backend
-      dockerfile: ../Dockerfile.nodejs.dev
-    container_name: backend
+      context: ./src/backend
+      dockerfile: ../../Dockerfile.nodejs.dev
+    container_name: backend_ce
     working_dir: /app
     volumes:
-      - ./backend:/app
+      - ./src/backend:/app
       - /app/node_modules
     ports:
       - "3000:3000"
     depends_on:
-      - db_posgresql
-  frontend:
+      - db_ce
+  frontend_ce:
     build:
-      context: ./frontend
-      dockerfile: ../Dockerfile.angular.dev
-      #dockerfile: ./Dockerfile.angular.dev
-    container_name: frontend
+      context: ./src/frontend
+      dockerfile: ../../Dockerfile.angular.dev
+    container_name: frontend_ce
     working_dir: /app
     volumes:
-      - ./frontend:/app
-      #- ./:/app
+      - ./src/frontend:/app
       - /app/node_modules
     ports:
       - "80:4200"
     depends_on:
-      - backend
+      - backend_ce
 volumes:
-  pgdata:
+  pgce:
