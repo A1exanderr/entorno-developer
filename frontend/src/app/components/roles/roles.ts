@@ -110,11 +110,7 @@ export class Roles {
     this.modalEditar = true;
     this.rolesService.obtenerRolesPermisos({"id":rol.id}).subscribe({
       next: (resp: any) => {
-        //console.log(resp);
-        this.permisos_user = resp;
-        console.log(resp);
-        //this.permisos = resp;
-        
+        this.permisos_user = resp.permisos;
         this.cd.detectChanges(); 
       },
       error: (err) => {
@@ -122,17 +118,28 @@ export class Roles {
       }
     });
   }
+
   actualizarRol() {
+    const permisosSeleccionados = this.permisos_user
+      .filter(p => p.asignado)
+      .map(p => p.id);
 
-    this.datos_roles.update(lista =>
-      lista.map(r =>
-        r.id === this.rolSeleccionado.id
-          ? { ...this.rolSeleccionado }
-          : r
-      )
-    );
-
-    this.modalEditar = false;
+    this.rolesService.editar({"id":this.rolSeleccionado.id, "rol": this.rolSeleccionado.rol, "permisos": permisosSeleccionados}).subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        this.datos_roles.update(lista =>
+          lista.map(r =>
+            r.id === this.rolSeleccionado.id
+              ? { ...this.rolSeleccionado }
+              : r
+          )
+        );
+        this.modalEditar = false;
+      },
+      error: (err) => {
+        console.log(err.error?.message || 'Error en editar los roles');
+      }
+    });
   }
 }
 /*

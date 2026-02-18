@@ -45,90 +45,6 @@
   </ng-template>
 </p-table>
 
-
-<!-- editar -->
-<p-dialog 
-  header="Editar Rol"
-  [modal]="true"
-  [(visible)]="modalEditar"
-  [style]="{ width: '25rem' }">
-
-  <div class="flex items-center gap-4 mb-4">
-    <label class="font-semibold w-24">Rol</label>
-    <input
-      pInputText
-      class="flex-auto"
-      [(ngModel)]="rolSeleccionado.rol"
-    />
-  </div>
-
-  <p-table 
-    #tabla_editar
-    [value]="permisos_user"
-    [paginator]="true"
-    [rows]="5"
-    [rowsPerPageOptions]="[5,10,20]"
-    responsiveLayout="scroll"
-    sortMode="multiple"
-    [globalFilterFields]="['permiso','descripcion']"
-    >
-
-    <ng-template pTemplate="caption">
-      <div class="flex justify-between items-center">
-        <span class="font-semibold">Permisos</span>
-        <input
-          pInputText
-          type="text"
-          placeholder="Buscar..."
-          (input)="tabla_editar.filterGlobal($event.target.value, 'contains')"
-          class="p-inputtext-sm"
-        />
-      </div>
-    </ng-template>
-
-    <ng-template pTemplate="header">
-      <tr>
-        <th>N°</th>
-        <th style="width:60px">check</th>
-        <th pSortableColumn="descripcion">
-          Descripción
-          <p-sortIcon field="descripcion"></p-sortIcon>
-        </th>
-        <th pSortableColumn="permiso">
-          Permiso
-          <p-sortIcon field="permiso"></p-sortIcon>
-        </th>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="body" let-permiso let-rowIndex="rowIndex">
-      <tr>
-        <td>{{ rowIndex + 1 }}</td>
-        <td>
-        <p-checkbox
-          [(ngModel)]="permiso.asignado"
-          binary="true">
-        </p-checkbox>
-      </td>
-      <td>{{ permiso.descripcion }}</td>
-      <td>{{ permiso.permiso }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-
-  <div class="flex justify-center gap-2">
-    <p-button 
-      label="Cancel"
-      severity="danger"
-      (click)="modalEditar = false">
-    </p-button>
-    <p-button 
-      label="Actualizar"
-      (click)="actualizarRol()">
-    </p-button>
-  </div>
-</p-dialog>
-
 <!-- Crear -->
 <p-dialog 
   header="Crear Rol"
@@ -208,6 +124,89 @@
     <p-button 
       label="Crear rol"
       (click)="guardarRol()">
+    </p-button>
+  </div>
+</p-dialog>
+
+<!-- editar -->
+<p-dialog 
+  header="Editar Rol"
+  [modal]="true"
+  [(visible)]="modalEditar"
+  [style]="{ width: '50rem' }">
+
+  <div class="flex items-center gap-4 mb-4">
+    <label class="font-semibold w-24">Rol</label>
+    <input
+      pInputText
+      class="flex-auto"
+      [(ngModel)]="rolSeleccionado.rol"
+    />
+  </div>
+
+  <p-table 
+    #tabla_editar
+    [value]="permisos_user"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5,10,20]"
+    responsiveLayout="scroll"
+    sortMode="multiple"
+    [globalFilterFields]="['permiso','descripcion']"
+    >
+
+    <ng-template pTemplate="caption">
+      <div class="flex justify-between items-center">
+        <span class="font-semibold">Permisos</span>
+        <input
+          pInputText
+          type="text"
+          placeholder="Buscar..."
+          (input)="tabla_editar.filterGlobal($event.target.value, 'contains')"
+          class="p-inputtext-sm"
+        />
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>N°</th>
+        <th style="width:60px">check</th>
+        <th pSortableColumn="descripcion">
+          Descripción
+          <p-sortIcon field="descripcion"></p-sortIcon>
+        </th>
+        <th pSortableColumn="permiso">
+          Permiso
+          <p-sortIcon field="permiso"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-permiso let-rowIndex="rowIndex">
+      <tr>
+        <td>{{ rowIndex + 1 }}</td>
+        <td>
+        <p-checkbox
+          [(ngModel)]="permiso.asignado"
+          binary="true">
+        </p-checkbox>
+      </td>
+      <td>{{ permiso.descripcion }}</td>
+      <td>{{ permiso.permiso }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="flex justify-center gap-2">
+    <p-button 
+      label="Cancel"
+      severity="danger"
+      (click)="modalEditar = false">
+    </p-button>
+    <p-button 
+      label="Actualizar"
+      (click)="actualizarRol()">
     </p-button>
   </div>
 </p-dialog>
