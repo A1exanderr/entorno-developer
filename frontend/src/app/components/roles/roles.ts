@@ -146,11 +146,11 @@ this.rolesService.crear().subscribe({
 }); 
 */
 /* 
-Ricardo pollo 25 + 10
-David  pollo 25
-Alex pollo 25
-Brayan chancho 40
-Briamar salas 30 
+Ricardo pollo 25 + 10 cancelado
+David  pollo 25 cancelado
+Alex pollo 25 cancelado
+Brayan chancho 40 cancelado
+Briamar salas 30 cancelado
 Rodrigo chancho 40 cancelado
 Carlos enrique 25 cancelado
 Noemi pollo 25 cancelado
