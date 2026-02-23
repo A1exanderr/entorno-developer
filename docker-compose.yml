@@ -1,6 +1,17 @@
 services:
+  #db_ce:
+  #  image: postgres:15
+  #  container_name: db_ce
+  #  environment:
+  #    POSTGRES_DB: db_developer
+  #    POSTGRES_USER: dba
+  #    POSTGRES_PASSWORD: sys
+  #  ports:
+  #    - "5432:5432"
+  #  volumes:
+  #    - pgce:/var/lib/postgresql/data
   db_ce:
-    image: postgres:15
+    image: postgis/postgis:17-3.4
     container_name: db_ce
     environment:
       POSTGRES_DB: db_developer
