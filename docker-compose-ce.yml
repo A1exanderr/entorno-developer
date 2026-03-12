@@ -2,7 +2,7 @@ services:
   db_ce_pro:
     image: postgis/postgis:17-3.4
     container_name: db_ce_pro
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_DB: db_developer
       POSTGRES_USER: dba
@@ -18,7 +18,7 @@ services:
       context: ./src/backend
       dockerfile: ../../Dockerfile.nodejs
     container_name: backend_ce_pro
-    restart: always
+    restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -31,7 +31,7 @@ services:
       context: ./src/frontend
       dockerfile: ../../Dockerfile.angular
     container_name: frontend_ce_pro
-    restart: always
+    restart: unless-stopped
     networks:
       - app_network
     depends_on:
