@@ -19,6 +19,7 @@ services:
       POSTGRES_PASSWORD: sys
     ports:
       - "5432:5432"
+    shm_size: "2gb"
     volumes:
       - pgce:/var/lib/postgresql/data
   backend_ce:
