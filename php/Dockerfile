@@ -1,11 +1,11 @@
 FROM php:8.2-fpm
 # Instalar dependencias del sistema
 RUN apt-get update && \
-    apt-get install -y curl unzip git libpq-dev libzip-dev libgmp-dev zip gnupg && \
+    apt-get install -y curl unzip git libzip-dev libgmp-dev zip gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g pm2 web-push && \
-    docker-php-ext-install pdo pdo_pgsql gmp bcmath
+    docker-php-ext-install pdo_mysql zip gmp bcmath
 # Establecer directorio de trabajo
 WORKDIR /var/www/html
 # Copiar Composer desde la imagen oficial
