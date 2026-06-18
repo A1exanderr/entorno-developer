@@ -1,0 +1,171 @@
+.btn-unique-blue {
+    --bs-btn-bg: #007bff;
+    --bs-btn-hover-bg: #0056b3;
+    color: #fff;
+}
+
+.btn-unique-blue:hover .btn-unique-green:hover {
+    color: #fff;
+}
+
+.btn-unique-green {
+    --bs-btn-bg: #28a745;
+    --bs-btn-hover-bg: #1e7e34;
+    color: #fff;
+}
+
+.btn-unique-red {
+    --bs-btn-bg: #dc3545;
+    --bs-btn-hover-bg: #b02a37;
+    color: #fff;
+}
+
+.btn-unique-yellow {
+    --bs-btn-bg: #ffc107;
+    --bs-btn-hover-bg: #d39e00;
+    color: #212529;
+}
+
+.btn-unique-purple {
+    --bs-btn-bg: #6f42c1;
+    --bs-btn-hover-bg: #593a96;
+    color: #fff;
+}
+
+.btn-unique-pink {
+    --bs-btn-bg: #e83e8c;
+    --bs-btn-hover-bg: #c2255c;
+    color: #fff;
+}
+
+.btn-unique-orange {
+    --bs-btn-bg: #fd7e14;
+    --bs-btn-hover-bg: #c96400;
+    color: #fff;
+}
+
+.btn-unique-teal {
+    --bs-btn-bg: #20c997;
+    --bs-btn-hover-bg: #199d76;
+    color: #fff;
+}
+
+.btn-unique-brown {
+    --bs-btn-bg: #8b4513;
+    --bs-btn-hover-bg: #6e3410;
+    color: #fff;
+}
+
+.btn-unique-grey {
+    --bs-btn-bg: #6c757d;
+    --bs-btn-hover-bg: #495057;
+    color: #fff;
+}
+
+.btn-unique-indigo {
+    --bs-btn-bg: #6610f2;
+    --bs-btn-hover-bg: #520dc2;
+    color: #fff;
+}
+
+.btn-unique-cyan {
+    --bs-btn-bg: #17a2b8;
+    --bs-btn-hover-bg: #128293;
+    color: #fff;
+}
+
+.btn-unique-lime {
+    --bs-btn-bg: #cddc39;
+    --bs-btn-hover-bg: #adb823;
+    color: #212529;
+}
+
+.btn-unique-amber {
+    --bs-btn-bg: #ffc107;
+    --bs-btn-hover-bg: #d39e00;
+    color: #212529;
+}
+
+.btn-unique-maroon {
+    --bs-btn-bg: #800000;
+    --bs-btn-hover-bg: #4d0000;
+    color: #fff;
+}
+
+.btn-unique-olive {
+    --bs-btn-bg: #808000;
+    --bs-btn-hover-bg: #4d4d00;
+    color: #fff;
+}
+
+.btn-unique-navy {
+    --bs-btn-bg: #000080;
+    --bs-btn-hover-bg: #000049;
+    color: #fff;
+}
+
+.btn-unique-aqua {
+    --bs-btn-bg: #00ffff;
+    --bs-btn-hover-bg: #00b3b3;
+    color: #212529;
+}
+
+.btn-unique-fuchsia {
+    --bs-btn-bg: #ff00ff;
+    --bs-btn-hover-bg: #b300b3;
+    color: #fff;
+}
+
+.btn-unique-silver {
+    --bs-btn-bg: #c0c0c0;
+    --bs-btn-hover-bg: #8c8c8c;
+    color: #212529;
+}
+
+.btn-unique-orchid {
+    --bs-btn-bg: #da70d6;
+    --bs-btn-hover-bg: #b455b6;
+    color: #fff;
+}
+
+.btn-unique-goldenrod {
+    --bs-btn-bg: #daa520;
+    --bs-btn-hover-bg: #b88518;
+    color: #212529;
+}
+
+.btn-unique-chocolate {
+    --bs-btn-bg: #d2691e;
+    --bs-btn-hover-bg: #a35317;
+    color: #fff;
+}
+
+
+.btn-unique-blue:hover,
+.btn-unique-green:hover,
+.btn-unique-red:hover,
+.btn-unique-purple:hover,
+.btn-unique-pink:hover,
+.btn-unique-orange:hover,
+.btn-unique-teal:hover,
+.btn-unique-brown:hover,
+.btn-unique-grey:hover,
+.btn-unique-indigo:hover,
+.btn-unique-cyan:hover,
+.btn-unique-maroon:hover,
+.btn-unique-olive:hover,
+.btn-unique-navy:hover,
+.btn-unique-fuchsia:hover,
+.btn-unique-aqua:hover,
+.btn-unique-orchid:hover,
+.btn-unique-chocolate:hover {
+    color: #fff;
+}
+
+.btn-unique-yellow:hover,
+.btn-unique-lime:hover,
+.btn-unique-amber:hover,
+.btn-unique-goldenrod:hover,
+.btn-unique-silver:hover {
+    color: #212529;
+}
